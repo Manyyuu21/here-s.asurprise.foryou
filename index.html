@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;font-family:'Nunito',sans-serif;}
+
+
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#f18cae,#d94a77);
+  overflow-x:hidden;
+}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp linear infinite;
+  opacity:.6;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+.card{
+  max-width:900px;
+  margin:50px auto;
+  background:#fff;
+  border-radius:45px;
+  padding:55px 35px;
+  box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+h1,h2{font-family:'Pacifico';color:#d6336c;text-align:center}
+
+.screen{display:none}
+.screen.active{display:block}
+
+/* buttons */
+.btn{
+  border:none;
+  padding:15px 30px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
+}
+.btn-pink{background:#f06292;color:#fff}
+.btn-pink:hover{transform:scale(1.07)}
+.btn-gray{background:#ddd}
+
+/* START */
+.start img{display:block;margin:30px auto;width:180px}
+
+/* ======= PRETTY MENU ======= */
+.menu-wrap{
+  background:linear-gradient(135deg,#ffe3ec,#ffd1df);
+  padding:40px 20px;
+  border-radius:30px;
+  margin-top:30px;
+  box-shadow:inset 0 0 20px rgba(255,255,255,.6);
+}
+
+.menu{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.gift-card{
+  background:#fff;
+  width:180px;
+  height:130px;
+  border-radius:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.2);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.gift-card:hover{transform:translateY(-8px) scale(1.05)}
+
+.gift-card span{
+  font-size:34px;
+}
+.gift-card p{
+  margin:10px 0 0;
+  font-weight:800;
+  color:#d6336c;
+}
+
+/* bubbles */
+.bubble{
+  background:linear-gradient(135deg,#ffd6e8,#ffeaf3);
+  padding:14px 22px;
+  border-radius:25px;
+  margin:14px;
+  display:inline-block;
+  font-family:'Pacifico', cursive;
+  color:#c2185b;
+  font-size:16px;
+  box-shadow:
+    0 8px 20px rgba(214,51,108,.35),
+    inset 0 0 10px rgba(255,255,255,.7);
+  animation:floatBubble 4s ease-in-out infinite;
+}
+#gift1{
+  background:radial-gradient(circle at top,#fff0f6,#ffffff);
+  border-radius:40px;
+  padding:20px;
+}
+@keyframes floatBubble{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+  100%{transform:translateY(0)}
+}
+
+/* ======= LETTER ======= */
+.letter-box{
+  background:repeating-linear-gradient(
+    #fff8c6,
+    #fff8c6 28px,
+    #f2d98d 29px
+  );
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+  position:relative;
+}
+
+.letter-box:before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  border:4px dashed #f06292;
+  border-radius:25px;
+  pointer-events:none;
+}
+
+textarea{
+  width:100%;
+  min-height:260px;
+  border:none;
+  resize:none;
+  background:transparent;
+  outline:none;
+  font-size:16px;
+  line-height:28px;
+}
+
+.signature{
+  text-align:right;
+  font-family:'Pacifico';
+  color:#d6336c;
+  font-size:20px;
+}
+
+/* polaroids */
+.polaroids{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+.polaroid{
+  background:#fff;
+  padding:12px 12px 34px;
+  width:220px;
+  box-shadow:0 12px 28px rgba(0,0,0,.3);
+}
+
+.polaroid:nth-child(2){transform:rotate(4deg)}
+.polaroid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:4px;
+}
+.caption{
+  text-align:center;
+  font-family:'Pacifico';
+  color:#d6336c;
+}
+
+.back{margin-top:30px}
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<30;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="💗";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=4+Math.random()*6+"s";
+ document.body.appendChild(h);
+}
+</script>
+
+<div class="card">
+
+<!-- SCREEN 1 -->
+<div class="screen start active" id="screen1">
+<h1>Hey kiki 💕</h1>
+<h2>Will you be my Valentine?</h2>
+<img src="hug.png">
+<div style="text-align:center">
+<button class="btn btn-pink" onclick="yes()">YES🥰</button>
+<button class="btn btn-gray" id="no">NO THANK YOU😒</button>
+</div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="screen2">
+<h1>Yay, you said yes! 💖</h1>
+<p style="text-align:center">I made these for you ✨</p>
+
+<div class="menu-wrap">
+<div class="menu">
+<div class="gift-card" onclick="openGift(1)"><span>🌹</span><p>Gift 1</p></div>
+<div class="gift-card" onclick="openGift(2)"><span>💌</span><p>Gift 2</p></div>
+<div class="gift-card" onclick="openGift(3)"><span>📸</span><p>Gift 3</p></div>
+</div>
+</div>
+</div>
+
+<!-- GIFT 1 -->
+ 
+<div class="screen" id="gift1">
+<h1>Rose Bouquet for you🌹</h1>
+<img src="bouquet.png" style="display:block;margin:25px auto;width:250px">
+<div style="text-align:center">
+<div class="bubble">I will always love you, no matter what❤️</div>
+<div class="bubble">You are the best part of my life🥰</div>
+<div class="bubble">I love to the moon and back💓 </div>
+<div class="bubble">Im gonna smother you with love🤗</div>
+</div>
+<button class="btn btn-pink back" onclick="back()">Back</button>
+</div>
+
+<!-- GIFT 2 -->
+<div class="screen" id="gift2">
+<h1>For my love💌<br><br>Hey kiki</h1>
+
+<div class="letter-box">
+<textarea placeholder="Loving you has been one of the most real and beautiful experiences of my life. from the very beginning, you’ve changed something in me the way I feel, the way I care, the way I see love with you, I didn’t just feel attraction or excitement I felt peace. I felt peace when i was next to you. I felt seen, I felt like home. every moment we’ve shared  the chaos, the laughter, the latenight talks, the quiet time has changed me in ways I didn’t even know I needed. Your eyes still makes me feel some sort of way, your presence still calms my heart, and the way you love me still makes me feel lucky. you’re not just someone I love you’re someone I choose, again and again. thank you for being patient with me for loving me in ways that are soft and strong all at once. I’m grateful for you, for us, and for everything we’re still becoming.💖"></textarea>
+<div class="signature">XOXO<br>Always, Forever</div>
+</div>
+
+<button class="btn btn-pink back" onclick="back()">Back</button>
+</div>
+
+<!-- GIFT 3 -->
+<div class="screen" id="gift3">
+<h1> Memories 📸</h1>
+<div class="polaroids">
+<div class="polaroid">
+<img src="memory1.jpg">
+<div class="caption">Us 💖</div>
+</div>
+<div class="polaroid">
+<img src="memory2.jpg">
+<div class="caption">Always</div>
+</div>
+</div>
+<button class="btn btn-pink back" onclick="back()">Back</button>
+</div>
+
+</div>
+
+<script>
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+function yes(){show('screen2')}
+function openGift(n){show('gift'+n)}
+function back(){show('screen2')}
+
+const no=document.getElementById("no");
+no.addEventListener("mouseover",()=>{
+ no.style.position="absolute";
+ no.style.left=Math.random()*60+"%";
+ no.style.top=Math.random()*60+"%";
+});
+</script>
+
+</body>
+
+</html>
